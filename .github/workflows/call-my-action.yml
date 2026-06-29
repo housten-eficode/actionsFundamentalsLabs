@@ -1,0 +1,26 @@
+name: Hi 🌍
+
+on:
+  push:
+    branches: [main]
+    paths: [my-action/**]
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        description: 'Who do we target for 🗨️'
+        type: string
+        required: true  
+        
+jobs:
+  test-my-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name : checkout
+        uses : actions/checkout@v4
+      - name : test-the-action
+        id : action-checker
+        uses :  ./my-action
+        with :
+          who-to-greet: ${{ inputs.who-to-greet }}
+      - name: show output
+        run : echo "The time was ${{ steps.action-checker.outputs.time }} when the action said hello"
