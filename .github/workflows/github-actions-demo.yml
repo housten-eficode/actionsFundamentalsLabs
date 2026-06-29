@@ -2,13 +2,16 @@ name: Actions Demo
 on: 
   push:
     branches: [main]
-    paths-ignore: [.github/*.*]
+    paths-ignore: [.github/**]
   schedule:
     - cron: "0,30 8-18 * * 1-5"
   workflow_dispatch: 
 
 jobs:
   Hello-Build:
+    permissions:
+      contents: read
+      issues: none
     runs-on: ubuntu-latest
     steps:
       - run: |
