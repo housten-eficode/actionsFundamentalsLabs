@@ -4,7 +4,7 @@ on:
     branches: [main]
     paths-ignore: [.github/**]
   schedule:
-    - cron: "0,30 8-18 * * 1-5"
+    - cron: "0 8 2 12 *"
   workflow_dispatch: 
 
 jobs:
