@@ -29,13 +29,13 @@ jobs:
       - run: echo ${{ vars.SERVICE_ACCOUNT_NAME }} ; echo ${{ secrets.SERVICE_ACCOUNT_PASSWORD }}
       - if: ${{ inputs.environments == 'dev' }}
         run: echo "🔍 Special steps for selected environment ${{ inputs.environments }}" >> $GITHUB_STEP_SUMMARY      
-  qa:
+  prod:
     runs-on: ubuntu-latest
     needs: [dev, test]
-    environment: qa
+    environment: prod
     steps:
       - run: echo ${{ vars.SERVICE_ACCOUNT_NAME }} ; echo ${{ secrets.SERVICE_ACCOUNT_PASSWORD }}
-      - if: ${{ inputs.environments == 'production' }}
+      - if: ${{ inputs.environments == 'prod' }}
         run: echo "🔍 Special steps for selected environment ${{ inputs.environments }}" >> $GITHUB_STEP_SUMMARY
 
         
